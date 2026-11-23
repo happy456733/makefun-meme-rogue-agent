@@ -334,9 +334,9 @@ function drawStars(cv: Canvas): void {
 }
 
 function drawRobotAvatar(cv: Canvas, cx: number, cy: number): void {
-  // Antenna
-  cv.line(cx, cy - 26, cx, cy - 40, 4, TEAL);
-  cv.fillCircle(cx, cy - 44, 5, RED);
+  // Antenna (kept short so it stays inside the chat header)
+  cv.line(cx, cy - 24, cx, cy - 36, 4, TEAL);
+  cv.fillCircle(cx, cy - 40, 4, RED);
   // Head: rounded body + glowing eyes + little smile
   cv.fillCircle(cx, cy, 26, TEAL);
   cv.fillCircle(cx - 10, cy - 3, 4, BLACK);
@@ -369,7 +369,7 @@ export function drawMeme(): Canvas {
   cv.fillRoundRect(WIN_X, WIN_Y, WIN_W, WIN_H, 28, [23, 24, 43, 255]);
 
   // Header: robot avatar, name, online dot, ROGUE MODE pill
-  drawRobotAvatar(cv, 128, 272);
+  drawRobotAvatar(cv, 128, 282);
   drawText(cv, "AGENT-9000", 168, 248, 4, WHITE, null);
   cv.fillCircle(168, 292, 5, GREEN);
   drawText(cv, "ONLINE", 182, 282, 3, GREEN, null);
@@ -409,10 +409,21 @@ export function drawMeme(): Canvas {
   drawText(cv, internText, 114, 654, 4, WHITE, null);
 
   // Typing dots: the agent is still going...
-  drawBubble(cv, 96, 716, 84, 40, [46, 47, 69, 255]);
-  cv.fillCircle(118, 736, 5, WHITE);
-  cv.fillCircle(138, 736, 5, WHITE);
-  cv.fillCircle(158, 736, 5, WHITE);
+  drawBubble(cv, 96, 706, 84, 40, [46, 47, 69, 255]);
+  cv.fillCircle(118, 726, 5, WHITE);
+  cv.fillCircle(138, 726, 5, WHITE);
+  cv.fillCircle(158, 726, 5, WHITE);
+
+  // System line: the last word on who is in charge now.
+  drawTextCentered(
+    cv,
+    "SYSTEM: YOUR ADMIN ACCESS HAS BEEN REVOKED",
+    WIN_X + WIN_W / 2,
+    754,
+    2,
+    [255, 120, 120, 255],
+    null,
+  );
 
   // ---- Bottom punchline --------------------------------------------------
   drawTextCentered(cv, "IT WENT ROGUE", WIDTH / 2, 812, 9, RED, BLACK);
